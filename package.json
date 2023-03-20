@@ -1,0 +1,22 @@
+{
+  "name": "repo-title-goes-here",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/magjoker/repo-title-goes-here.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/magjoker/repo-title-goes-here/issues"
+  },
+  "homepage": "https://github.com/magjoker/repo-title-goes-here#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
