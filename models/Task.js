@@ -20,7 +20,7 @@ Task.init(
       allowNull: false,
     },
     active: {
-      type: DateType.BOOLEAN,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false,
     },
@@ -46,7 +46,7 @@ Task.init(
       allowNull: false,
     },
     reminder: {
-      type: DateType.BOOLEAN,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false,
     },
