@@ -37,7 +37,7 @@ User.init(
       allowNull: false,
     },
     password: {
-      type: DataTypes.STRING(8),
+      type: DataTypes.STRING(1024),
       allowNull: false,
       validate: {
         len: [8],
@@ -45,7 +45,7 @@ User.init(
     },
     color: {
       type: DataTypes.STRING(50),
-      allowNull: false,
+      allowNull: true,
     }
   },
   {
