@@ -15,18 +15,10 @@ Calendar.init(
       type: DataTypes.STRING(1024),
       allowNull: false,
     },
-    date_planned: {
-      type: DataTypes.DATE,
+    code: {
+      type: DataTypes.STRING(50),
       allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    user_list: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'userlist',
-        key: 'id',
-      },
-    },
+    }
   },
   {
     sequelize,

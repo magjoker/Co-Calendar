@@ -14,41 +14,14 @@ Event.init(
     title: {
       type: DataTypes.STRING(1024),
       allowNull: false,
-    }, 
-    description: {
-      type: DataTypes.STRING(2048),
+    },
+    start: {
+      type: DataTypes.STRING(10),
       allowNull: false,
     },
-    active: {
-      type: DataTypes.BOOLEAN,
+    end: {
+      type: DataTypes.STRING(10),
       allowNull: false,
-      defaultValue: false,
-    },
-    updated_date: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    start_date: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    end_date: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    start_time: {
-      type: DataTypes.TIME,
-      allowNull: false,
-    },
-    end_time: {
-      type: DataTypes.TIME,
-      allowNull: false,
-    },
-    reminder: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false,
     },
     calendar_id: {
       type: DataTypes.INTEGER,
