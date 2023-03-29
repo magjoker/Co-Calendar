@@ -3,64 +3,33 @@ const { Event, Calendar } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
-// Get all of the users Events
-router.get('/', withAuth, async(req, res) => {
+router.get('/calendar_id/:id', async(req, res) => {
     try {
+        console.log(req.params)
         const eventData = await Event.findAll({
-            include: [
-                {
-                    model: Calendar,
-                    attributes: ['name', 'Users']
-                }
-            ],
             where: {
-                user_id: req.session.user_id,
-                date: currentDate,
-                status: active,
+                calendar_id: req.params.id
+            }, 
+            attributes: {
+                exclude: ['id', 'calendar_id', 'event_id']
             }
-        })
-        const events = eventData.map((eventThing) => eventThing.get({plain: true}));
-        res.render('homepage', {
-            events,
-            logged_in: req.session.logged_in
-        })
-        res.render('calendarPage', {
-            events,
-            logged_in: req.session.logged_in
-        })
-    } catch (err) {
-        res.status(500).json(err);
-    }
-})
+        });
 
-// Get an event by ID
-router.get('/:id', withAuth, async(req, res) => {
-    try{    const eventData = await Event.findByPk(req.params.id, {
-        include: [{
-            model: Calendar,
-            attributes: ['name']
-        }]
-    })
-    const events = eventData.map((eventThing) => eventThing.get({plain: true}));
-    res.render('homepage', {
-        events,
-        logged_in: req.session.logged_in
-    })
-    res.render('calendarPage', {
-        events,
-        logged_in: req.session.logged_in
-    })
+        res.status(200).json(eventData);
+
     } catch (err) {
+        console.log("Fail")
         res.status(500).json(err);
     }
+
 })
 
 // Create an Event
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
+    console.log(req.body)
     try {
         const newEvent = await Event.create({
             ...req.body,
-            user_id: req.session.user_id,
         })
         res.status(200).json(newEvent)
     } catch (err) {

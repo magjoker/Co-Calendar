@@ -13,6 +13,7 @@ UserList.init(
     },
     calendar_id: {
       type: DataTypes.INTEGER,
+      unique: false,
       references: {
         model: 'calendar',
         key: 'id',
@@ -20,6 +21,7 @@ UserList.init(
     },
     user_id: {
       type: DataTypes.INTEGER,
+      unique: false,
       references: {
         model: 'user',
         key: 'id',

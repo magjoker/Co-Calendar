@@ -1,39 +1,42 @@
 const router = require('express').Router();
-const { Calendar } = require('../../models');
+const sequelize = require('../../config/connection');
+const { Calendar, UserList, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req, res) => {
-    try {
-      const newCalendar = await Calendar.create({
-        ...req.body,
-        user_id: req.session.user_id,
+router.get('/:id', async(req, res) => {
+  try {
+      console.log(req.params)
+      const calID = await Calendar.findAll({
+        where: {
+          code: req.params.id
+        },
+        attributes: {
+          exclude: ['title', 'code']
+      }
       });
-  
+
+      res.status(200).json(calID);
+
+  } catch (err) {
+      console.log("Fail")
+      res.status(500).json(err);
+  }
+
+})
+
+router.post('/',  async (req, res) => {
+    try {
+      console.log(req.body)
+      const newCalendar = await Calendar.create({
+        title: req.body.title,
+        code: req.body.code
+      })
+
       res.status(200).json(newCalendar);
     } catch (err) {
       res.status(400).json(err);
     }
   });
-  
-  router.delete('/:id', withAuth, async (req, res) => {
-    try {
-      const calendarData = await Calendar.destroy({
-        where: {
-          id: req.params.id,
-          user_id: req.session.user_id,
-        },
-      });
-  
-      if (!calendarData) {
-        res.status(404).json({ message: 'No project found with this id!' });
-        return;
-      }
-  
-      res.status(200).json(calendarData);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  });
-  
+
   module.exports = router;
   
