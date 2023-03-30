@@ -37,7 +37,7 @@ const calendarCreator = async (event) => {
       })
    
     if (response.ok) {
-      alert(`Your calendar code is ${code}`)
+      document.getElementById("code-holder").textContent=`Your Calendar Code Is ${code}`;
       } else {
         alert(response.statusText);
       }

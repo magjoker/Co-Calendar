@@ -16,11 +16,11 @@ Event.init(
       allowNull: false,
     },
     start: {
-      type: DataTypes.STRING(10),
+      type: DataTypes.DATE,
       allowNull: false,
     },
     end: {
-      type: DataTypes.STRING(10),
+      type: DataTypes.DATE,
       allowNull: false,
     },
     calendar_id: {

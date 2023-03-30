@@ -24,6 +24,27 @@ router.get('/:id', async(req, res) => {
 
 })
 
+router.get('/code/:id', async(req, res) => {
+  try {
+      console.log(req.params)
+      const calID = await Calendar.findAll({
+        where: {
+          id: req.params.id
+        },
+        attributes: {
+          exclude: ['title, id']
+      }
+      });
+
+      res.status(200).json(calID);
+
+  } catch (err) {
+      console.log("Fail")
+      res.status(500).json(err);
+  }
+
+})
+
 router.post('/',  async (req, res) => {
     try {
       console.log(req.body)

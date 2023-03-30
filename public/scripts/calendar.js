@@ -3,6 +3,13 @@ var end_time;
 const calID = document.querySelector('#calendar-container');
 const calendar_id = calID.dataset.id;
 var eventList;
+var code;
+
+fetch(`/api/calendar/code/${calendar_id}`)
+.then((response) => response.json())
+.then(data => {code = data[0].code});
+
+
 
 document.addEventListener('DOMContentLoaded', function(data) {
     var calendarEl = document.getElementById('calendar');
@@ -22,6 +29,20 @@ document.addEventListener('DOMContentLoaded', function(data) {
         });
       
         },
+        customButtons: {
+          backToProfile: {
+            text: 'Back to Profile',
+            click: function() {
+              window.location.replace(`/profile`)
+            }
+          },
+          shareLink: {
+            text: 'Show Calendar Link',
+            click: function() {
+              alert(`Your code is ${code}`)
+            }
+          }
+        },
       themeSystem: 'bootstrap5',
       selectable: true,
       selectHelper: true,
@@ -34,6 +55,11 @@ document.addEventListener('DOMContentLoaded', function(data) {
         console.log(end_time)
         $('#myModal').modal('toggle')
       },
+      headerToolbar: {
+        right: 'prev,next today backToProfile',
+        center: `title`,
+        left: 'shareLink dayGridMonth,timeGridWeek,timeGridDay'
+      }
     });
     
     calendar.render();

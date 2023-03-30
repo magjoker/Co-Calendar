@@ -1,24 +1,23 @@
-<div>
-  <h1 id="infoHolder" data-id="{{id}}">Welcome {{first_name}}</h1>
+ <div class="row justify-content-center mb-3 mt-5 bg-secondary rounded-3 mx-auto my-auto border border-dark" style="width:700px">
+   <h1 id="infoHolder" data-id="{{id}}">Welcome {{first_name}}: To Co-Calendar!</h1>
+
+  <div class="row ">
+    <h2>Enter your calendar code.</h2>
+      <form class="form-login">
+          <div class="mb-3">
+            <input class="form-control" type="text" id="code_id"/>
+          </div>
+          <div class="input-group">
+            <button class="btn btn-primary btn-submit border border-dark mb-3" type="button" id="goToCal">Go to Calendar</button>
+            <button type="button" class="btn btn-primary border border-dark mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal"> Create New Calendar </button>
+          </div>
+      </form>
+  </div>
 </div>
-    <div>
-        <h2>Go to your Calendar</h2>
-        <form class="form-login">
-            <div class="input-group">
-                <label>Calendar Code:</label>
-                <input class="form-input" type="text" id="code_id"/>
-            </div>
-            <div class="input-group">
-                <button class="btn-submit" type="button" id="goToCal">Login</button>
-            </div>
-        </form>
-    </div>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Create New Calendar
-</button>
-
+  <div class="row justify-content-center mb-3 mt-2 bg-secondary rounded-3 mx-auto border border-dark" style="width:700px">
+    <h2 id="code-holder">Your Calendar Code Will Display Here.</h2>
+  </div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -47,7 +46,5 @@
     </div>
   </div>
 </div>
-
-
 
 <script src="/scripts/createCalendar.js"></script>
