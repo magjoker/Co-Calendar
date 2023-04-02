@@ -41,7 +41,7 @@ main {
 }
 
 .masthead {
-    padding: 10.775rem;
+    padding: 8.775rem;
     text-align: center;
     font-size: 3.372rem;
     font-family: water;
@@ -51,21 +51,28 @@ main {
 }
 .thing1,
 .thing2 {
-    columns: 2;
+    columns: 1;
     margin: 1rem;
-    display: inline-block;
+    grid-template-columns: auto auto;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: transparent;
+    text-align: center;
 }
 
 button.thing3 {
     border-radius: 2.775rem;
     color: black;
     background-color: transparent;
+    align-items: center;
+    display: grid;
 }
 
 button.thing4 {
     border-radius: 2.775rem;
     color: black;
     background-color: transparent;
+    display: flex;
+    justify-content: center;
 }
 
 button.thing3:hover {
@@ -78,9 +85,28 @@ button.thing4:hover {
 
 .text1 {
     margin-top: auto;
-
 }
 
 .text2 {
     margin-top: auto;
+    margin-left: 1.555rem;
+}
+
+.side,
+.sideR {
+    box-sizing: content-box;
+    background-color: transparent;
+    border: round 5px black;
+    float: left;
+    width: 45%;
+    padding: 0 0.812rem;
+}
+
+.text {
+    margin: auto 0;
+}
+
+.tD {
+    display: grid;
+    grid-template: auto / auto auto;
 }
